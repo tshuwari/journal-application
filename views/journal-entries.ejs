@@ -24,17 +24,22 @@
           <%= header%>
         </div>
         <div class="journal-entries">
-        <% for(var i = 0; i < entries.length; i++){%>
+        <% for(var i = 0; i < entries.length-1; i++){%>
           <div class="journal-entry">
-          <div><%= entries[i].title%></div>
-            <div><%= entries[i].body%></div>
-
+            <div><%= i+1%>&nbsp<%= entries[i].title%></div>
           </div>
         <% } %>
           <div class="journal-entry-last">
-            <div></div>
-            <div></div>
+            <div class="journal-entry-last-title">
+              <%= entries.length%>&nbsp<%= entries[entries.length-1].title%>
+            </div>
+            <div class="journal-entry-last-body">
+              <%= entries[entries.length-1].body%>
+            </div>
           </div>
+        </div>
+        <div class="journal-area-new">
+          <a href="/journal/<%= header%>/new">Create New Entry</a>
         </div>
       </div>
   </body>
