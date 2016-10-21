@@ -1,13 +1,18 @@
 <!DOCTYPE>
 <html>
   <head>
-
+    <title>Add Journal</title>
   </head>
 
   <body>
     <form>
-      <div class="title"><input class="jentry" type="text" readonly size="18" id="jtitle"></div>
-      <div class="description"><textarea></div>
+      <label for="title">Journal Title</label>
+      <div class="title"><input class="jentry" value="Enter a Journal Title" name="title" type="text" readonly size="18" id="title"></div>
+      <label for="title">Description</label>
+      <div class="description" value="Write a Journal Entry"><textarea rows="4" cols="50" id="desc">
+</textarea>
+<div class="row"><input type="button" class="button save" value="SAVE"> <input type="button" class="button cancel" value="CANCEL"></div>
+</div>
 
     </form>
   </body>
