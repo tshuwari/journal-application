@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Index Page</title>
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="./main.css">
   </head>
   <body>
       <div id="top_bar"> Andela Boot Camp </div>
@@ -21,7 +21,9 @@
         </div>
 
       <div id = "body_controls">
-        <a href="#">Dummy Item One</a>
+      <% for(var i = 0; i < journal.length; i++) {%>
+        <a href="/journal/<%= journal[i]%>"><%= journal[i]%></a>
+      <% }%>
     </div>
   </body>
 </html>
