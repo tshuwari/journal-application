@@ -1,0 +1,93 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title>Index Page</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script type="text/javascript" src="jquery.js"></script>
+  </head>
+  <body>
+      <div id="top_bar"> Andela Boot Camp </div>
+      <div id="menu_bar"> My Journal Application (Group 4) </div>
+          <div id = "menu">
+                        <nav id="primary_nav_wrap">
+              <ul>
+                <li class="current-menu-item"><a href="index.html">Home</a></li>
+                <li><a href="#">My Journals</a>
+                </li>
+                <li><a href="#">View Journal</a></li>
+              </ul>
+
+              </nav>
+
+        </div>
+
+      <div id = "body_controls">
+        <a href="#" id="clicked">Dummy Item One</a>
+    </div>
+
+    <div id="output" style="color:#fff">
+
+    </div>
+  </body>
+</html>
+<script type="text/javascript">
+// For Demostration as a prove of concept
+  $.ajax({
+    "type": "get",
+    "url": "/all",
+    success: function(d)
+    {
+      var output = "";
+      for(data in d)
+      {
+        output += '<h2>'+data+'</h2>';
+      }
+
+      $('#output').html(output);
+    }
+  });
+//Demo ends here
+
+
+  $.ajax({
+    "type": "get",
+    "url": "/last-entry",
+    success: function(d)
+    {
+      if(d){
+        var output = "";
+        output += '<h2>' + d.title + '</h2>';
+        output += '<div>';
+        output += '<p>' + d.body + '</p>';
+        output += '</div>';
+        $('#last-post').html(output);
+        return
+      }
+      $('#last-post').html("<h1>No Journal please create one.</h1>");
+
+
+    }
+  });
+
+  $('.create-journal').click(function(){
+    var title = $('popup-journal-title').val();
+    var description = $('popup-journal-description').val();
+
+    $.ajax({
+      "type": "get",
+      "data": {jtitle: title, desc: description},
+      "url": "/create-journal",
+      success: function(recievedData)
+      {
+        if(recievedData.status == "successful")
+        {
+          //update UI
+          return;
+        }
+
+        $('.j-creation-field').html("Sorry your Journal creation was not successful. Please try again.");
+      }
+    });
+  });
+
+</script>
