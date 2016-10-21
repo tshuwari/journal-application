@@ -29,10 +29,28 @@ app.get('/journal/', function(req, res){
 			links.push(keys);
 		}
 		var temp = {journal: links};
-		res.render('index.ejs', temp);
+		res.render('journals.ejs', temp);
 	});
 });
 
+
+app.get('/journal/:id', function(req, res){
+	fs.readFile(filename, 'utf8', function(err, data){
+		journalData = JSON.parse(data);
+
+		var temp = {header: req.params.id};
+
+		var entries = journalData[req.params.id];
+		var entriesT = [];
+		for(keys in entries){
+			entriesT.push(entries[keys]);
+
+		}
+
+		res.render('journal-entries.ejs', {header: req.params.id,
+			entries: entriesT});
+	});
+});
 
 app.get('/journal/new', function(req, res){
 	res.send(req.params.id);
@@ -42,16 +60,7 @@ app.post('/journal/new', function(req, res){
 	res.send(req.params.id);
 });
 
-app.get('/journal/:id', function(req, res){
-	fs.readFile(filename, 'utf8', function(err, data){
-		journalData = JSON.parse(data);
 
-
-				
-		
-		res.send(htmlData);
-	});
-});
 
 
 app.listen(9999, function(){

@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Index Page</title>
-    <link rel="stylesheet" type="text/css" href="./main.css">
+    <link href="/css/main.css" rel="stylesheet" type="text/css">
   </head>
   <body>
       <div id="top_bar"> Andela Boot Camp </div>
@@ -19,11 +19,23 @@
               </nav>
 
         </div>
+      <div class="journal-area">
+        <div class="journal-header">
+          <%= header%>
+        </div>
+        <div class="journal-entries">
+        <% for(var i = 0; i < entries.length; i++){%>
+          <div class="journal-entry">
+          <div><%= entries[i].title%></div>
+            <div><%= entries[i].body%></div>
 
-      <div id = "body_controls">
-      <% for(var i = 0; i < journal.length; i++) {%>
-        <a href="/journal/<%= journal[i]%>"><%= journal[i]%></a>
-      <% }%>
-    </div>
+          </div>
+        <% } %>
+          <div class="journal-entry-last">
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
   </body>
 </html>
