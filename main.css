@@ -1,4 +1,18 @@
-.box{
-  background: blue ;
+
+body{
+  background: black ;
   text-align: center ;
+}
+label{
+  color: white ;
+}
+
+h1{
+  color: red ;
+}
+.row{
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: 35%;
+  text-align: left;
 }
