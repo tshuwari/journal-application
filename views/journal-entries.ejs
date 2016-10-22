@@ -1,0 +1,46 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title>Index Page</title>
+    <link href="/css/main.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+      <div id="top_bar"> Andela Boot Camp </div>
+      <div id="menu_bar"> My Journal Application (Group 4) </div>
+          <div id = "menu">
+                        <nav id="primary_nav_wrap">
+              <ul>
+                <li class="current-menu-item"><a href="index.html">Home</a></li>
+                <li><a href="/journal">My Journals</a>
+                </li>
+                <li><a href="#">View Journal</a></li>
+              </ul>
+
+              </nav>
+
+        </div>
+      <div class="journal-area">
+        <div class="journal-header">
+          <%= header%>
+        </div>
+        <div class="journal-entries">
+        <% for(var i = 0; i < entries.length-1; i++){%>
+          <div class="journal-entry">
+            <div><%= i+1%>&nbsp<%= entries[i].title%></div>
+          </div>
+        <% } %>
+          <div class="journal-entry-last">
+            <div class="journal-entry-last-title">
+              <%= entries.length%>&nbsp<%= entries[entries.length-1].title%>
+            </div>
+            <div class="journal-entry-last-body">
+              <%= entries[entries.length-1].body%>
+            </div>
+          </div>
+        </div>
+        <div class="journal-area-new">
+          <a href="/journal/<%= header%>/new">Create New Entry</a>
+        </div>
+      </div>
+  </body>
+</html>
